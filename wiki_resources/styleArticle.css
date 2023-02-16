@@ -1,0 +1,167 @@
+/* Version V0.2 (9.1.2023) */
+
+/* .articleBody{
+    margin-left: 200px; 
+    margin-right: 200px; 
+}  */
+
+body{
+    margin-left: 300px; /* temporary */
+    margin-right: 300px; /* temporary */
+} 
+
+.articleTitle{
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.articleBody h2{
+    border-bottom: solid #1565c0 2px;
+    padding-bottom: 5px;
+    font-size: 22px;
+    color:#1565c0
+}
+
+.articleBody h3{
+    font-size: 20px;
+    color:#1565c0
+}
+
+.articleBody h4{
+    font-size: 16px;
+    color:#1565c0
+}
+
+.subsectionNote{
+    font-style: italic;
+    padding-left: 1.6em;
+    margin: -5px 0px;
+}
+
+.centerTable{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centered{
+    text-align: center;
+}
+
+.inline{
+    display: inline;
+}
+/* ****************************************************** Wiki table ************************************************************* */
+
+.wikitable {
+    background-color: #f8f9fa;
+    color: #202122;
+    margin: 1em 0;
+    border: 1px solid #a2a9b1;
+    border-collapse: collapse;
+  }
+
+.wikitable > tr > th, .wikitable > tr > td, .wikitable > * > tr > th, .wikitable > * > tr > td {
+border: 1px solid #a2a9b1;
+padding: 0.2em 0.4em;
+}
+
+.wikitable > tr > th, .wikitable > * > tr > th {
+background-color: #eaecf0;
+text-align: center;
+}
+
+/* ******************************************************************************************************************* */
+/* todo remove?? */
+.wikiAppLink{
+color: rgb(51, 102, 255);
+text-decoration: underline;
+cursor: pointer;
+}
+
+.wikiContentLink{
+    color: rgb(51, 102, 255);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.grayBox{
+    background-color: #f2f2f2;
+    border: 1px solid #d9d9d9;
+    padding: 10px 15px;
+    color: #262626;
+}
+
+.warningBox{
+    background-color: #ffeef0;
+    color: #cb2431;
+    border-left: 0.25em solid #cb2431;
+    padding: 1em;
+}
+
+.noteBox{
+    background-color: #f1f8ff;
+    color: #0366d6;
+    border-left: 0.25em solid #0366d6;
+    padding: 1em;
+}
+
+.importantBox{
+    background-color: #fff5b1;
+    color: #1b1f23;
+    border-left: 0.25em solid #ffd33d;
+    padding: 1em;
+}
+
+/* *************************************************** Content table **************************************************************** */
+
+/* Also used nestedOrderedList! */
+
+#contentTableDiv{
+    display: none;
+}
+
+
+
+/* *************************************************** Nested ordered list **************************************************************** */
+
+.nestedOrderedList ol {
+    counter-reset: item;
+}
+
+.nestedOrderedList li {
+    display: block
+}
+
+.nestedOrderedList li:before {
+    content: counters(item, ".") " ";
+    counter-increment: item;
+}
+
+/* *************************************************** Code example div **************************************************************** */
+.codeExample{
+    overflow: hidden;
+}
+
+/* *************************************************** Colors **************************************************************** */
+
+.doneFlag::after{
+    color: green;
+    content: "(done)";
+}
+
+.yellow{
+    color: #ffcc00;
+}
+
+.green{
+    color: green;
+}
+
+.red{
+    color: red;
+}
+
+.blue{
+    color: blue;
+}
+
