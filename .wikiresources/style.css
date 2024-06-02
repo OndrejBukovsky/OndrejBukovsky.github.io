@@ -1,0 +1,129 @@
+@import "wikitree.css";
+
+.child {
+  display: inline-block;
+  /*border: 1px solid rgb(119, 0, 255); /*Debug purpose */
+  padding: 1rem 1rem;
+  vertical-align: top;
+}
+
+.panel {
+  display: inline-block;
+  width: 250px;
+  position: fixed;
+  left: 0px;
+  overflow-x: scroll;
+  top: 0px;
+  bottom: 0px;
+  background-color: white;
+  border: solid #1565c0;
+}
+
+.content {
+  display: inline-block;
+  margin-left: 280px;
+  width: 80%;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: fill-available;
+}
+
+#iframeContent {
+  overflow-x: hidden;
+  height: 800px;
+  width: 100%;
+  border: none;
+}
+
+#showPagesBtn {
+  display: none;
+  margin-left: 280px;
+  width: 80%;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: fill-available;
+  height: 40px;
+  background-color: #1565c0;
+  color: white;
+  border: none;
+}
+
+#loadingStatus {
+  display: none;
+  position: fixed;
+  background-color: #f0f0f0d6;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading {
+  display: inline-block;
+  border: 8px solid #CECECE;
+  border-top: 8px solid #00AEF9;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+#loadingStatusContainer {
+  position: relative;
+  top: 40%;
+  text-align: center;
+  margin-right: 280px;
+}
+
+
+
+/* Use a media query to add a breakpoint at 1200px: (mobile friendly design) */
+@media screen and (max-width: 1200px) {
+  .panel {
+    display: none;
+    border: none;
+  }
+
+  .content {
+    margin-left: 0px;
+  }
+
+  #showPagesBtn {
+    display: inline-block;
+    margin-left: 0px;
+  }
+}
+
+.showMobileMenu.panel {
+  display: block;
+  z-index: 1;
+  width: 80%;
+  width: -moz-available;
+  /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;
+  /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
+  top: 50px;
+}
+
+/* ******************************************************************************************************************* */
+.wikiAppLink {
+  color: rgb(51, 102, 255);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+info icon {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAACXBIWXMAAAsTAAALEwEAmpwYAAABGElEQVR4nIVSO07EQAydjgPwqbETPtdA0IWWeuk4CUjxLMWWSBwBtJSUUO0dKGHsEQ2fEikSyAkblBmHtWSNMuOXZz8/54woz2UT6niMFE/11G+3KrbrsAde7pC4QS/ffRI3QDLH+mXHBAKFIyD+HICSBH2fhsOcMQECSUCSM/TCw5/wR3H5XP6xaqsZEz+Us6c1JH40OrhtgejjVjbjssjLlzkCcbM75Q3XqmoWyDVQPEEvb7YGsXLoZTIiEHedpTPLMifjzCvBsXL7F2F9ZOZxMP3O3O1Y5kbBogUTL4xN3PSrUudkBiG5B5IrPZP795Jei4FR1DlqgP8cpsCijgemRdU5agDL29pqxmiFiqFqdmuMVS9OEj8SJ5q26oN8uwAAAABJRU5ErkJggg==');
+}
+
+info icon {
+  background-repeat: no-repeat;
+  background-position: 4px center;
+  padding-left: 24px;
+}

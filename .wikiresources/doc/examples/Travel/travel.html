@@ -1,0 +1,64 @@
+<!-- WikiArticle -->
+<!-- Private -->
+<!-- Travel -->
+<!-- Version V0.8 (6.7.2023) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link rel="stylesheet" href="../../../styleArticle.css">
+
+	<!-- Vega-lite -->
+	<script src="../../../lib/vega-lite/vega.min.js"></script>
+	<script src="../../../lib/vega-lite/vega-lite.min.js"></script>
+	<script src="../../../lib/vega-lite/vega-embed.min.js"></script>
+</head>
+
+<body id="body">
+	<div id="articleBody" class="articleBody">
+		<h1 class="articleTitle">Travel</h1>
+
+		<div class="centered" style="border: solid black 1px;">
+			<div id="graphContainer" style="width:80%;"></div>
+		</div>
+
+		<div id="contentTableDiv">
+			<!-- If contentTableDiv is present, a header with id="ContentTableHeader" has to be here to avoid adding it to the content table. -->
+			<h2 id="ContentTableHeader">Content table</h2>
+		</div>
+
+		<div class="articleSection">
+			<h2 id="CodeExample">Bucket list</h2>
+			<p class="importantBox"><strong>IMPORTANT:</strong> add all</p>
+
+		</div>
+
+		<div class="articleSection">
+			<h2>Trips</h2>
+			<p class="importantBox"><strong>IMPORTANT:</strong> add all</p>
+		</div>
+
+	</div>
+
+</body>
+
+
+<!-- JS script which provides basic functionalities such as links, ... (Mandartory!) -->
+<script src="../../../script.js"></script>
+<!-- Generation of the content table (Delete this line if a content table is not needed) -->
+<script>generateContentTable();</script>
+
+
+<script src="worldMapSpec.js"></script>
+<script>
+
+	vegaEmbed('#graphContainer', vegaSpec).then(function(result) {
+		const graphContainer = document.getElementById("graphContainer");
+		vegaView = result.view;
+		vegaView.width(graphContainer.clientWidth);
+		vegaView.runAsync();
+	});
+	
+</script>
+
+</html>

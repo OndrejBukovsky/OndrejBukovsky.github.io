@@ -1,0 +1,69 @@
+<!-- WikiArticle -->
+<!-- Private -->
+<!-- Library -->
+<!-- Version V0.8 (6.7.2023) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Stylesheet which contains styles for an article. (Mandartory!) -->
+	<link rel="stylesheet" href="../../../styleArticle.css">
+</head>
+
+<body id="body">
+	<!-- Div with id="articleBody". (Mandartory!) -->
+	<div id="articleBody" class="articleBody">
+		<h1 class="articleTitle">My library</h1>
+
+		<div>
+			<p>Something to say here...</p>
+			<a class="wikiAppLink" name="/.wikiresources/doc/tutorial.html">Usage tutorial</a>
+
+		</div>
+
+		<div id="contentTableDiv">
+			<!-- If contentTableDiv is present, a header with id="ContentTableHeader" has to be here to avoid adding it to the content table. -->
+			<!-- <h2 id="ContentTableHeader">Content table</h2> -->
+		</div>
+
+		<div class="articleSection">
+			<h2>Books</h2>
+
+			<div id="bookContent">
+
+			</div>
+		</div><!-- Section "Books" end -->
+	</div>
+</body>
+
+
+
+<script src="books.js"></script>
+<script>
+	const bookContent = document.getElementById("bookContent");
+
+	books.forEach(element => {
+		const subsection = document.createElement("div");
+		subsection.className = "articleSubsection";
+
+		const h3 = document.createElement("h3");
+		h3.innerText = element.name;
+		subsection.appendChild(h3);
+
+		const link = document.createElement("p");
+		link.className = "subsectionNote";
+		link.innerHTML = '<a href="./pdfs/' + element.link + '">' + element.link + '</a>';
+		subsection.appendChild(link);
+
+		const p = document.createElement("p");
+		p.innerText = element.description;
+		subsection.appendChild(p);
+
+		bookContent.appendChild(subsection);
+	});
+</script>
+
+<!-- JS script which provides basic functionalities such as links, ... (Mandartory!) -->
+<script src="../../../script.js"></script>
+
+</html>

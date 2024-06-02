@@ -1,0 +1,98 @@
+<!-- WikiArticle -->
+<!-- Public -->
+<!-- Bit fields -->
+<!-- Version V0.8 (6.7.2023) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- highlight.js -->
+	<link rel="stylesheet" href="../../../../.wikiresources/lib/highlight.js/style.min.css">
+	<script src="../../../../.wikiresources/lib/highlight.js/highlight.min.js"></script>
+
+	<!-- highlightjs-copy -->
+	<link rel="stylesheet" href="../../../../.wikiresources/lib/highlightjs-copy/highlightjs-copy.min.css">
+	<script src="../../../../.wikiresources/lib/highlightjs-copy/highlightjs-copy.min.js"></script>
+
+	<!-- highlightjs-line-numbers -->
+	<script src="../../../../.wikiresources/lib/highlightjs-line-numbers/highlightjs-line-numbers.min.js"></script>
+
+	<!-- Stylesheet which contains styles for an article. (Mandartory!) -->
+	<link rel="stylesheet" href="../../../../.wikiresources/styleArticle.css">
+	
+</head>
+
+<body id="body">
+	<!-- Div with id="articleBody". (Mandartory!) -->
+	<div id="articleBody" class="articleBody">
+		<h1 class="articleTitle">Bit fields</h1>
+
+		<div id="contentTableDiv">
+			<!-- If contentTableDiv is present, a header with id="ContentTableHeader" has to be here to avoid adding it to the content table. -->
+			<h2 id="ContentTableHeader">Content table</h2>
+		</div>
+
+		<div class="articleSection">
+			<h2 id="CodeExample">Code example</h2>
+
+			<div>
+				<pre><code id="cppCode" class="language-cpp"></code></pre>
+			</div>
+
+		</div><!-- Section "Code example" end -->
+		
+	</div>
+</body>
+
+<!-- JS script which provides basic functionalities such as links, ... (Mandartory!) -->
+<script src="../../../../.wikiresources/script.js"></script>
+<!-- Generation of the content table (Delete this line if a content table is not needed) -->
+<script>generateContentTable();</script>
+
+<!-- highlight.js -->
+<script>
+	const cppCode = `#include <bit>
+#include <cstdint>
+#include <iostream>
+ 
+struct S
+{
+    // will usually occupy 2 bytes:
+    unsigned char b1 : 3; // 1st 3 bits (in 1st byte) are b1
+    unsigned char    : 2; // next 2 bits (in 1st byte) are blocked out as unused
+    unsigned char b2 : 6; // 6 bits for b2 - doesn't fit into the 1st byte => starts a 2nd
+    unsigned char b3 : 2; // 2 bits for b3 - next (and final) bits in the 2nd byte
+};
+ 
+int main()
+{
+    std::cout << sizeof(S) << '\\n'; // usually prints 2
+ 
+    S s;
+    // set distinguishable field values
+    s.b1 = 0b111;
+    s.b2 = 0b101111;
+    s.b3 = 0b11;
+ 
+    // show layout of fields in S
+    auto i = std::bit_cast<std::uint16_t>(s);
+    // usually prints 1110000011110111
+    // breakdown is:  \\_/\\/\\_/\\____/\\/
+    //                 b1 u a   b2  b3
+    // where "u" marks the unused :2 specified in the struct, and
+    // "a" marks compiler-added padding to byte-align the next field.
+    // Byte-alignment is happening because b2's type is declared unsigned char;
+    // if b2 were declared uint16_t there would be no "a", b2 would abut "u".
+    for (auto b = i; b; b >>= 1) // print LSB-first
+        std::cout << (b & 1);
+    std::cout << '\\n';
+}`;
+
+	loadSourceFile(cppCode, "cppCode");
+
+	hljs.addPlugin(new CopyButtonPlugin());
+	hljs.highlightAll();
+	hljs.initLineNumbersOnLoad();
+</script>
+
+</html>
